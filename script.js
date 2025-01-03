@@ -12,6 +12,7 @@ const rankingList = document.getElementById('ranking-list');
 let score = 0;
 let timeLeft = 10;
 let countdown;
+let gameStarted = false; // 게임이 시작되었는지 여부를 추적
 
 // 최고 기록 관리
 let rankings = JSON.parse(localStorage.getItem('rankings')) || [];
@@ -27,6 +28,11 @@ function updateRankingList() {
 
 // 고양이 클릭 이벤트
 cat.addEventListener('click', () => {
+    if (!gameStarted) { // 게임이 시작되지 않았으면
+        startTimer(); // 타이머 시작
+        gameStarted = true; // 게임 시작 플래그 설정
+    }
+
     if (timeLeft > 0) {
         score++;
         scoreDisplay.textContent = `Score: ${score}`;
@@ -72,11 +78,13 @@ function startGame() {
     cat.style.pointerEvents = 'auto'; // 고양이 클릭 가능하게 만들기
     nicknameInput.style.display = 'none'; // 닉네임 입력 숨기기
 
-    startTimer();
+    gameStarted = false; // 게임이 시작되지 않도록 설정
 }
 
 // "다시 하기" 버튼 클릭 시 게임 초기화
-restartButton.addEventListener('click', startGame);
+restartButton.addEventListener('click', () => {
+    startGame(); // 게임 초기화
+});
 
 // 기록 저장
 saveRecordButton.addEventListener('click', () => {
