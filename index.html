@@ -18,6 +18,21 @@
 
     <div id="score">Score: 0</div>
     <div id="timer">Time Left: 10s</div>
+    <div id="game-end">
+        <p id="final-score"></p>
+        <button id="restart-button">다시 하기</button>
+    </div>
+
+    <div id="nickname-input">
+        <label for="nickname">닉네임을 입력하세요:</label>
+        <input type="text" id="nickname" />
+        <button id="save-record">기록 저장</button>
+    </div>
+
+    <div id="ranking">
+        <h2>Top 10 Records</h2>
+        <ul id="ranking-list"></ul>
+    </div>
     <div id="ad-container">
         <!-- AdSense 광고 코드 삽입 -->
         <script async
@@ -30,11 +45,7 @@
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
     </div>
-
-
-
     <script src="script.js"></script>
-
 </body>
 
 </html>
